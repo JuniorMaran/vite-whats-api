@@ -10,9 +10,13 @@ const MarketingMessage = () => {
         text: "",
         id: "",
         localizacao: "",
-        body: "",
         footer: "",
     });
+    const [bodyInputValues, setBodyInputValues] = useState({
+        body: "",
+        buttonVariables: {},
+    });
+    console.log('variables =>', bodyInputValues);
 
     const [isLoading, setIsLoading] = useState(false);
     const [inputError, setInputError] = useState(false);
@@ -25,8 +29,8 @@ const MarketingMessage = () => {
                 setIsLoading={setIsLoading}
             />
             <BodyMarketing
-                inputValues={inputValues}
-                setInputValues={setInputValues}
+                bodyInputValues={bodyInputValues}
+                setBodyInputValues={setBodyInputValues}
                 inputError={inputError}
                 setInputError={setInputError}
             />

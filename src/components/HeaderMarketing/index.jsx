@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-
+import { useState } from "react";
+import PropTypes from "prop-types";
 import {
     FormControl,
     InputLabel,
@@ -111,6 +111,12 @@ const HeaderMarketing = (props) => {
 
         </>
     );
+};
+
+HeaderMarketing.propTypes = {
+    inputValues: PropTypes.object.isRequired,
+    setInputValues: PropTypes.func.isRequired,
+    setIsLoading: PropTypes.func.isRequired,
 };
 
 export default HeaderMarketing;
