@@ -3,7 +3,7 @@ import { TextField } from "@mui/material";
 import {uploadMedia} from '../../../services/api';
 
 const Image = (props) => {
-    const { setInputValues, setIsLoading } = props;
+    const { setHeaderInputValues, setIsLoading } = props;
 
     const handleInputChange = async (type, event) => {
         const value = event.target.files[0];
@@ -12,7 +12,7 @@ const Image = (props) => {
         try {
             const response = await uploadMedia(value);
     
-            setInputValues((prev) => ({
+            setHeaderInputValues((prev) => ({
                 ...prev,
                 type: type.toLowerCase(),
                 id: response.id,
@@ -42,7 +42,7 @@ const Image = (props) => {
 };
 
 Image.propTypes = {
-    setInputValues: PropTypes.func.isRequired,
+    setHeaderInputValues: PropTypes.func.isRequired,
     setIsLoading: PropTypes.func.isRequired,
 };
 
