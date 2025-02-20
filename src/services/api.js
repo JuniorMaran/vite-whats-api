@@ -22,7 +22,7 @@ export const uploadMedia = async (file) => {
 
     try {
         const response = await apiFB.post(
-            `/${import.meta.env.FB_PHONE_NUMBER}/media`, 
+            `/${import.meta.env.VITE_FB_PHONE_NUMBER}/media`, 
             formData
         );
         return response.data;

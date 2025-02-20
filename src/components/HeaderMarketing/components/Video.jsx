@@ -4,7 +4,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import {uploadMedia} from '../../../services/api';
 
 const Video = (props) => {
-    const { inputValues, setInputValues, setIsLoading } = props;
+    const { headerInputValues, setHeaderInputValues, setIsLoading } = props;
 
     const handleInputChange = async (type, event) => {
         const value = event.target.files[0];
@@ -13,7 +13,7 @@ const Video = (props) => {
         try {
             const response = await uploadMedia(value);
 
-            setInputValues((prev) => ({
+            setHeaderInputValues((prev) => ({
                 ...prev,
                 type: type.toLowerCase(),
                 id: response.id,
@@ -26,7 +26,7 @@ const Video = (props) => {
     };
 
     const handleRemoveFile = () => {
-        setInputValues((prev) => ({
+        setHeaderInputValues((prev) => ({
             ...prev,
             video: "",
         }));
@@ -46,7 +46,7 @@ const Video = (props) => {
             InputLabelProps={{ shrink: true }}
             onChange={(e) => handleInputChange("video", e)}
             InputProps={{
-                endAdornment: inputValues.video ? (
+                endAdornment: headerInputValues.video ? (
                     <InputAdornment position="end">
                         <IconButton onClick={handleRemoveFile} edge="end">
                             <DeleteIcon />
@@ -59,8 +59,8 @@ const Video = (props) => {
 };
 
 Video.propTypes = {
-    inputValues: PropTypes.object.isRequired,
-    setInputValues: PropTypes.func.isRequired,
+    headerInputValues: PropTypes.object.isRequired,
+    setHeaderInputValues: PropTypes.func.isRequired,
     setIsLoading: PropTypes.func.isRequired,
 };
 

@@ -21,7 +21,7 @@ const BodyMarketing = (props) => {
         const value = event.target.value;
         const matches = value.match(/{{(.+?)}}/g) || [];
         
-        const existingVariables = { ...bodyInputValues.buttonVariables };
+        const existingVariables = { ...bodyInputValues?.buttonVariables };
         const newVariables = {};
         
         matches.forEach(match => {
@@ -47,7 +47,7 @@ const BodyMarketing = (props) => {
                 // defaultValue="Default Value"
                 variant="filled"
                 error={inputError}
-                value={bodyInputValues.body}
+                value={bodyInputValues?.body}
                 onChange={(e) => {
                     handleInputChange("body", e);
                     handleUpdateVariable(e);
@@ -55,7 +55,7 @@ const BodyMarketing = (props) => {
                 helpertext={inputError ? "Este campo é obrigatório." : ""}
                 required
             />
-            {Object.entries(bodyInputValues.buttonVariables).map(([variableKey, variableValue]) => (
+            {bodyInputValues && Object.entries(bodyInputValues.buttonVariables).map(([variableKey, variableValue]) => (
                 <BodyMarketingLabel 
                     key={variableKey}
                     variableKey={variableKey}
